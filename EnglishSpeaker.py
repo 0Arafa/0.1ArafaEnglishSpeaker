@@ -53,13 +53,13 @@ def mainscript():
                                 many=choice(List[1:3])
                         elif levelask.lower() == "hard":
                                 many=choice(List[3:6])
-                        elif levelask.lower() == "very hard" or levelask.lower() == "expert":
+                        elif levelask.lower() in ("very hard","expert"):
                                 many=choice(List[6:10])
                         elif levelask.lower() == "legend":
                                 many=List[10]
                         answer=choices(text,k= many)
                         main_text= " ".join(answer)
-                elif levelask.lower() == "exit" or levelask.lower() == "quit":
+                elif levelask.lower() in ("exit","quit"):
                         print("\n")
                         quit()
                 else:
@@ -73,10 +73,10 @@ def mainscript():
                 cprint(count,"green",attrs=["bold"],end="")
                 cprint(" ]","grey",attrs=["bold"],end=" ")
                 ask=input(colored("Are you ready? ( Y , N , RESTART ): ","blue",attrs=["bold"])).strip()
-                if ask.lower() == "n" or ask.lower() == "no" or ask.lower() == "exit" or ask.lower() == "quit":
+                if ask.lower() in ("n","no","exit","quit"):
                         print("\n")
                         quit()
-                elif ask.lower() == "restart" or ask.lower() == "replay" or ask.lower() == "play again":
+                elif ask.lower() in ("restart","replay","play again"):
                         cleaner()
                         aboutme()
                         mainscript()
@@ -90,7 +90,7 @@ def mainscript():
                                 except KeyboardInterrupt:
                                         cprint("\n[!] Stopped by the user.","yellow","on_red",attrs=["bold"])
                                         exit()
-                                except: # reconnecting while network error
+                                except: # reconnecting when network error
                                         cprint("[-] ERROR: Network error, ","red",attrs=["bold"],end="")
                                         cprint("trying to connect...","red",attrs=["reverse","blink"])
                                         connect()
